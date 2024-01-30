@@ -11,10 +11,10 @@ const AddProductPage = () => {
           <option value="phone">Phone</option>
           <option value="computer">Computer</option>
         </select>
-        <input type="number" name="price" id="price" />
-        <input type="number" name="stock" id="stock" />
-        <input type="text" name="color" id="color" />
-        <input type="text" name="size" id="size" />
+        <input type="number" name="price" id="price" placeholder="$999" />
+        <input type="number" name="stock" id="stock" placeholder="99" />
+        <input type="text" name="color" id="color" placeholder="black matte" />
+        <input type="text" name="size" id="size" placeholder="4''9" />
         <textarea
           name="description"
           id="description"
