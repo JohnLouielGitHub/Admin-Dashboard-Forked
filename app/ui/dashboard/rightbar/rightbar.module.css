@@ -1,9 +1,6 @@
-.container {
-}
-
 .item {
   position: relative;
-  background: linear-gradient(to top, #182237, #252525);
+  background: var(--bgGradient);
   padding: 20px 10px;
   border-radius: 10px;
   margin-bottom: 20px;

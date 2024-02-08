@@ -1,8 +1,10 @@
 :root {
-  --bg: #151c2c;
-  --bgSoft: #182237;
-  --text: #fff;
-  --textSoft: #b7bac1;
+  --bg: #fff;
+  --bgSoft: #fdddff;
+  --bgHard: #f699fd;
+  --bgGradient: linear-gradient(to top, #f699fd, #fdddff);
+  --text: #000;
+  --textSoft: #2a2a2a;
 }
 
 * {

@@ -47,9 +47,9 @@
   background-color: transparent;
   border: none;
   width: 100%;
-  color: #fff;
+  color: var(--text);
 }
 
 .logout:hover {
-  background-color: #2e374a;
+  background-color: var(--bgHard);
 }
