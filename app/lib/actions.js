@@ -2,6 +2,7 @@ import { revalidatePath } from "next/cache";
 import { User } from "./models"
 import { connectToDB } from "./utils";
 import { redirect } from "next/navigation";
+import bcrypt from "bcrypt"
 
 export const addUser = async (formData) => {
     "use server"
@@ -9,8 +10,11 @@ export const addUser = async (formData) => {
 
     try {
         connectToDB();
+
+        const salt = await bcrypt.genSalt(10)
+        const hashPassword = await bcrypt.hash(password, salt)
         const newUser = new User({
-            username, email, password, phone, address, isAdmin, isActive
+            username, email, hashPassword, phone, address, isAdmin, isActive
         })
 
         await newUser.save();
