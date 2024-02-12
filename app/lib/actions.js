@@ -14,7 +14,7 @@ export const addUser = async (formData) => {
         const salt = await bcrypt.genSalt(10)
         const hashPassword = await bcrypt.hash(password, salt)
         const newUser = new User({
-            username, email, hashPassword, phone, address, isAdmin, isActive
+            username, email, password: hashPassword, phone, address, isAdmin, isActive
         })
 
         await newUser.save();
@@ -23,7 +23,7 @@ export const addUser = async (formData) => {
         throw new Error("Failed to create user!")
     }
 
-    revalidatePath("dashboard/users") //refreshes user table list
+    revalidatePath("/dashboard/users") //refreshes user table list
     redirect("/dashboard/users") //redirects user to users page
 }
 
@@ -34,7 +34,7 @@ export const addProduct = async (formData) => {
         connectToDB();
 
         const newProduct = new Product({
-            title, desc, color, price, stock, size
+            title, desc, price, stock, color, size,
         })
 
         await newProduct.save();
@@ -43,7 +43,7 @@ export const addProduct = async (formData) => {
         throw new Error("Failed to create product!")
     }
 
-    revalidatePath("dashboard/products") //refreshes user table list
+    revalidatePath("/dashboard/products") //refreshes user table list
     redirect("/dashboard/products") //redirects user to products page
 }
 
@@ -58,7 +58,7 @@ export const deleteUser = async (formData) => {
         throw new Error("Failed to delete user!")
     }
 
-    revalidatePath("dashboard/users") //refreshes user table list
+    revalidatePath("/dashboard/users") //refreshes user table list
 }
 
 export const deleteProduct = async (formData) => {
@@ -72,5 +72,5 @@ export const deleteProduct = async (formData) => {
         throw new Error("Failed to delete product!")
     }
 
-    revalidatePath("dashboard/products") //refreshes user table list
+    revalidatePath("/dashboard/products") //refreshes user table list
 }
