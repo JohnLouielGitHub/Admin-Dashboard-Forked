@@ -26,6 +26,7 @@ export const addUser = async (formData) => {
     revalidatePath("dashboard/users") //refreshes user table list
     redirect("/dashboard/users") //redirects user to users page
 }
+
 export const addProduct = async (formData) => {
     const { title, desc, color, price, stock, size } = Object.fromEntries(formData);
 
@@ -44,4 +45,18 @@ export const addProduct = async (formData) => {
 
     revalidatePath("dashboard/products") //refreshes user table list
     redirect("/dashboard/products") //redirects user to products page
+}
+
+export const deleteProduct = async (formData) => {
+    const { id } = Object.fromEntries(formData);
+
+    try {
+        connectToDB();
+        await Product.findByIdAndDelete(id)
+    } catch (error) {
+        console.log(error)
+        throw new Error("Failed to delete product!")
+    }
+
+    revalidatePath("dashboard/products") //refreshes user table list
 }
