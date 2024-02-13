@@ -14,6 +14,7 @@ import {
 } from "react-icons/md";
 import MenuLink from "./menuLink/menuLink";
 import Image from "next/image";
+import { auth } from "@/app/auth";
 
 const menuItems = [
   {
@@ -78,7 +79,8 @@ const menuItems = [
   },
 ];
 
-function Sidebar() {
+const Sidebar = async () => {
+  const session = await auth();
   return (
     <div className={styles.container}>
       <div className={styles.user}>
@@ -110,6 +112,6 @@ function Sidebar() {
       </button>
     </div>
   );
-}
+};
 
 export default Sidebar;
